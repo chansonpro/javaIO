@@ -1,0 +1,27 @@
+File类常用的API介绍：
+java.io.File用来表示文件（目录）我们就可以操作硬盘上的文件和目录。
+File类值用来表示用于表示文件（目录）的信息（名称，大小等），不能用于文件内容的访问。
+1、创建File文件对象  param： 文件地址
+File file = new File("E:\\javaio");  or new File("E:" + File.sepatator);
+File.sepatator  不同系统通用分隔符
+
+file.exists()   文件或目录是否存在
+file.mkdir()  创建文件夹
+file.mkdirs()  创建层级文件夹，不需要父级文件夹存在
+file.isDirectory()  bool 是否是一个目录  如果是返回时TRUE，不是或者不存在返回FALSE
+file.isFile()  bool 是否是一个文件
+
+File file2 = new File("E:\\java\\test.txt");
+File file2 = new File("E:\\java","test.txt");
+
+file2.delete();  删除文件
+file2.createNewFile();  创建文件
+常用的FILE对象的API
+打印file对象获得文件目录  等效于 file.getAbsolutePath()
+file.getName() 如果是文件获得文件名，如果是文件夹过的文件名称
+file.getParent()  父目录路径
+file.getParentFile() File  父目录对象
+
+file.length();获取文件大小。
+file.getFormat();获取文件格式名。
+file.createNewFile();创建新文件。
