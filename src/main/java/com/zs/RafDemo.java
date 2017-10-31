@@ -4,6 +4,7 @@ package com.zs;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Arrays;
 
 /**
  * User: chanson-pro
@@ -23,6 +24,34 @@ public class RafDemo {
         RandomAccessFile raf = new RandomAccessFile(file,"rw");
         //指针的位置
         System.out.println(raf.getFilePointer());
+        raf.write('联');
+        System.out.println(raf.getFilePointer());
+        int i = 0x7fffffff;
+
+        raf.writeInt(i);
+        System.out.println(raf.getFilePointer());
+        raf.seek(1);
+        String str = "中国人民！";
+        byte[] bytes = str.getBytes("utf-8");
+        //采用字节数组做参数，一次不仅可以写入一个汉字，可以写入一串汉字！
+        raf.write(bytes);
+        System.out.println(raf.getFilePointer());
+        // [2]读文件内容，注意，读文件，必须把指针移到文件头部
+        raf.seek(0);
+        // 一次性读取，把读取到的内容保存到字节数组中
+        byte[] buf = new byte[(int) raf.length()];
+        raf.read(buf);
+
+        System.out.print(Arrays.toString(buf)+" ");
+        System.out.println();
+        // 16进制输出
+        for (byte b:buf) {
+            System.out.print(Integer.toHexString(b & 0xff) + " ");
+        }
+
+        // 最后，关闭
+        raf.close();
+
 
     }
 
