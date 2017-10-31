@@ -40,3 +40,18 @@ file.createNewFile();创建新文件。
      6、读方法
           int b=raf.read()----->读一个字节
      7、文件读写完成以后一定要关闭（Oracle官方说明）
+********************************************************************************
+********************************************************************************
+1.IO流：输入流和输出流;(字节流和字符流)
+2.字节流：InputStream、OutputStream;
+    InputStream抽象了应用程序读取数据的方式;
+    Outpustream抽象了应用程序写入数据的方式;
+EOF=End 读到-1就读取结束
+3.输入流的基本方法
+ int b=in.read();读取一个字节无符号填充到int低八位。-1是EOF
+ in.read(byte[]buf);读取数据填充到字节数据 buf中;
+ in.read(byte[]buf,int start,int size)读取数据到字节数组buf从buf的start位置开始存放size长度的数据;
+4.输出流的基本方法
+out.write(int b)写入一个byte到流，b的低8位
+out.write(byte[]buf)将buf字节数组都写入到流
+out.write(byte[]buf,int start,int size);字节数组buf从start位置开始写size长度的字节到流
